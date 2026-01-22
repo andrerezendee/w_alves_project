@@ -1,0 +1,325 @@
+/* Reset e Variáveis de Cores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --bg-dark: #0f1014;       /* Fundo quase preto */
+    --bg-card: #1a1c23;       /* Fundo dos cartões */
+    --text-main: #e0e0e0;     /* Texto claro */
+    --neon-accent: #00f2ff;   /* Azul Fluorescente (Ciano Elétrico) */
+    --neon-glow: 0 0 10px rgba(0, 242, 255, 0.4); /* Brilho azulado ajustado */
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* Navbar */
+nav {
+    background-color: rgba(15, 16, 20, 0.95);
+    padding: 1.5rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(10, 255, 157, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: "Orbitron", sans-serif;
+    /* color: var(--neon-accent); */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: var(--neon-glow);
+    /* Centralização absoluta do nome */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.brand-name span {
+  color: var(--neon-accent);
+  font-family: "Orbitron", sans-serif;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    width: 100%;
+}
+
+/* Estrutura para manter o nome no meio e links nas pontas */
+.nav-left, .nav-right {
+    display: flex;
+    gap: 20px;
+    flex: 1; /* Ocupam espaço igual */
+}
+
+.nav-right {
+    justify-content: flex-end; /* Empurra links da direita para a ponta */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--neon-accent);
+}
+
+/* Links Mobile (padrão oculto) */
+.nav-mobile-links {
+    display: none;
+}
+
+/* Seções Gerais */
+section {
+    padding: 5rem 2rem;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+h2 {
+    border-bottom: 2px solid var(--neon-accent);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* Hero Section */
+#intro {
+    /* ... mantenha as outras configs (max-width, position, etc) ... */
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+    padding: 10;
+
+    display: flex;
+    /* MUDANÇA AQUI: De 'center' para 'flex-start' (alinha à esquerda) */
+    justify-content: flex-start;
+    align-items: center;
+
+    min-height: 85vh;
+}
+
+/* A imagem estica para cobrir 100% da largura da seção */
+.banner-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* A mágica: corta o excesso sem distorcer a imagem */
+    z-index: 1;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(15, 16, 20, 0.3), /* Topo: 0.3 = 30% opacidade (Bem mais transparente) */
+        rgba(15, 16, 20, 0.9)  /* Fundo: 0.9 = 90% (Quase sólido, para transição suave) */
+    );
+    z-index: 2;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 3;
+
+    /* MUDANÇA AQUI: Alinha o conteúdo interno à esquerda */
+    text-align: left;
+
+    padding: 2rem;
+    /* max-width: 800px; */
+    width: 100%;
+
+    /* MUDANÇA AQUI: Adiciona um respiro da borda esquerda */
+    margin-left: 5%;
+    margin-top: 10%;
+}
+.item {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  left: 100%;
+  animation: adsRun 10s linear infinite;
+}
+.item img {
+  width: 200px;
+  background-color: aliceblue;
+  width: 100px;
+  height: 30px; /* Importante definir altura para manter o formato */
+  object-fit: cover;
+  border: 2px solid #00f2ff; /* Borda sólida neon completa */
+  border-radius: 15px;       /* Cantos arredondados */
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+}
+.item2 {
+  animation-delay: 2s;
+}
+.item3 {
+  animation-delay: 4s;
+}
+.item4 {
+  animation-delay: 6s;
+}
+.item5 {
+  animation-delay: 8s;
+}
+.item6 {
+  animation-delay: 10s;
+}
+
+@keyframes adsRun {
+  from {
+    left: 100%;
+  }
+  to {
+    left: -50px;
+  }
+
+}
+
+/* Títulos e Parágrafos */
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-align: left; /* Garante alinhamento */
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    /* color: #aaa; */
+    margin-bottom: 2rem;
+    text-align: left; /* Garante alinhamento */
+    max-width: 600px; /* Opcional: limita a largura do texto para não ficar muito comprido */
+}
+
+.cta-button {
+    padding: 12px 30px;
+    background-color: transparent;
+    border: 1px solid var(--neon-accent);
+    color: var(--neon-accent);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: var(--neon-glow);
+    margin-left: 150px;
+
+
+}
+
+.cta-button:hover {
+    background-color: var(--neon-accent);
+    color: var(--bg-dark);
+}
+
+/* Cards (Grid) */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-accent);
+}
+
+.card h3 {
+    color: var(--neon-accent);
+    margin-bottom: 1rem;
+}
+
+/* Responsividade (Mobile) */
+@media (max-width: 768px) {
+    /* Esconde os links laterais do desktop */
+    .nav-left, .nav-right {
+        display: none !important;
+    }
+
+    /* Ajusta o nome da marca para ficar normal (não absoluto) */
+    .brand-name {
+        position: static;
+        transform: none;
+        margin: 0 auto;
+    }
+
+    /* Muda a navbar para coluna */
+    .nav-container {
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Mostra os links mobile */
+    .nav-mobile-links {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .nav-mobile-links a {
+        color: var(--text-main);
+        text-decoration: none;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+}
