@@ -8,26 +8,30 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,600;1,600&family=Orbitron:wght@400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-  </head>
+      <link rel="shortcut icon" href="#">
+    </head>
   <body>
 
       <nav>
           <div class="nav-container">
 
-              <div class="brand-name">Wilian <span>Alves</span></div>
+              <div class="brand-name">Wilian <span>Alves</span>
+                <h3>Gestor de Tráfego</h3>
+              </div>
 
+              <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
 
-              <div class="nav-right nav-links">
+              <div class="nav-right nav-links" id="menu-direita">
                   <a href="#quem-sou">Quem Sou</a>
                   <a href="#servicos">Serviços</a>
                   <a href="#feedback">Feedback</a>
               </div>
 
-              <div class="nav-mobile-links">
-                  <a href="#quem-sou">Quem Sou</a>
-                  <a href="#servicos">Serviços</a>
-                  <a href="#feedback">Feedback</a>
-              </div>
+
           </div>
       </nav>
 
@@ -39,22 +43,23 @@
         <div class="banner-overlay"></div>
 
         <div class="banner-content">
-            <h1 class="hero-title">Escale seus Resultados.</h1>
+            <h1 class="hero-title">Escale seus <span>Resultados</span>.</h1>
             <p class="hero-subtitle"><strong> Transformo cliques em clientes através de gestão de tráfego estratégico.</strong></p>
             <a href="#servicos" class="cta-button">Ver Soluções</a>
+            <div class="lista-items">
+              <div class="item item1"><img src="./assets/item1_1.png" alt="google ads"></div>
+              <div class="item item2"><img src="./assets/item1_2.png" alt="meta ads"></div>
+              <div class="item item3"><img src="./assets/item1_3.png" alt="tiktok ads"></div>
+            </div>
         </div>
       </section>
-      <div class="container">
-        <div class="carrossel">
-          <div class="item item1"><img src="./assets/item1_1.png" alt="google ads"></div>
-          <div class="item item2"><img src="./assets/item1_2.png" alt="meta ads"></div>
-          <div class="item item3"><img src="./assets/item1_3.png" alt="tiktok ads"></div>
-          <div class="item item4"><img src="./assets/item1_1.png" alt="google ads"></div>
-          <div class="item item5"><img src="./assets/item1_2.png" alt="meta ads"></div>
-          <div class="item item6"><img src="./assets/item1_3.png" alt="tiktok ads"></div>
 
-        </div>
+      <div class="divisor-container">
+        <div class="linha-cruzada"></div>
+
+        <img src="./assets/logo.png" alt="Logo" class="logo-divisor">
       </div>
+
 
       <section id="servicos">
           <h2>Meus Serviços</h2>
@@ -87,6 +92,6 @@
               </div>
           </div>
       </section>
-
+     <script src="script.js"></script>
   </body>
 </html>

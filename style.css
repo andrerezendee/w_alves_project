@@ -49,11 +49,9 @@ nav {
     font-size: 1.5rem;
     font-weight: 700;
     font-family: "Orbitron", sans-serif;
-    /* color: var(--neon-accent); */
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: var(--neon-glow);
-    /* Centralização absoluta do nome */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -61,6 +59,12 @@ nav {
 .brand-name span {
   color: var(--neon-accent);
   font-family: "Orbitron", sans-serif;
+}
+.brand-name h3 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 .nav-links {
@@ -96,6 +100,20 @@ nav {
 /* Links Mobile (padrão oculto) */
 .nav-mobile-links {
     display: none;
+}
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    z-index: 1001; /* Fica acima de tudo */
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--neon-accent); /* Usa seu neon azul */
+    transition: all 0.3s ease;
 }
 
 /* Seções Gerais */
@@ -139,7 +157,43 @@ h2 {
 
     min-height: 85vh;
 }
+.lista-items {
+    display: flex;           /* A mágica que coloca lado a lado */
+    gap: 20px;               /* Espaço entre cada item */
+    justify-content: left; /* Centraliza o grupo na tela */
+    flex-wrap: wrap;         /* Se não couber na tela, quebra para linha de baixo */
+    width: 100%;
+    position: relative;
+    padding-top: 20px;
+    padding-left: 60px;
+}
+.item {
+    width: 100px;
+    height: 50px;
+    position: relative; /* Mude de absolute para relative */
+    display: flex;
+    align-items: center; /* Centraliza a img verticalmente */
+    justify-content: center;
+}
+.item img {
+    /* Dimensões */
+    width: 200px;   /* Mantive apenas um width */
+    height: 30px;
+    object-fit: cover;
 
+    /* Estilo Botão Neon */
+    background-color: aliceblue;
+    border: 2px solid #00f2ff;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+
+    /* Interatividade */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.item img:hover {
+    transform: scale(1.1);
+}
 /* A imagem estica para cobrir 100% da largura da seção */
 .banner-img {
     position: absolute;
@@ -180,48 +234,11 @@ h2 {
     margin-left: 5%;
     margin-top: 10%;
 }
-.item {
-  width: 100px;
-  height: 50px;
-  position: absolute;
-  left: 100%;
-  animation: adsRun 10s linear infinite;
-}
-.item img {
-  width: 200px;
-  background-color: aliceblue;
-  width: 100px;
-  height: 30px; /* Importante definir altura para manter o formato */
-  object-fit: cover;
-  border: 2px solid #00f2ff; /* Borda sólida neon completa */
-  border-radius: 15px;       /* Cantos arredondados */
-  box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
-}
-.item2 {
-  animation-delay: 2s;
-}
-.item3 {
-  animation-delay: 4s;
-}
-.item4 {
-  animation-delay: 6s;
-}
-.item5 {
-  animation-delay: 8s;
-}
-.item6 {
-  animation-delay: 10s;
+.banner-content span {
+  color: var(--neon-accent);
 }
 
-@keyframes adsRun {
-  from {
-    left: 100%;
-  }
-  to {
-    left: -50px;
-  }
 
-}
 
 /* Títulos e Parágrafos */
 .hero-title {
@@ -259,6 +276,165 @@ h2 {
     color: var(--bg-dark);
 }
 
+.divisor-container {
+    position: relative;
+    width: 100%;
+    height: 80px; /* Altura do espaço do divisor */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 40px 0; /* Espaço em cima e embaixo do divisor */
+}
+
+/* A Linha Neon que vai de fora a fora */
+.linha-cruzada {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        transparent 0%,           /* Começa invisível na ponta esquerda */
+        var(--neon-accent) 15%,   /* Fica 100% visível logo depois */
+        var(--neon-accent) 85%,   /* Mantém visível até o outro lado */
+        transparent 100%          /* Termina invisível na ponta direita */
+    );
+
+    /* Para esse efeito, removemos o box-shadow antigo para o brilho não vazar nas pontas transparentes */
+    z-index: 1;
+}
+
+/* A Logo encostada na linha */
+.logo-divisor {
+    position: relative;
+    z-index: 2; /* Fica na frente da linha */
+    height: 60px; /* Tamanho da sua logo */
+
+    /* O SEGREDO DO EFEITO: */
+    background-color: transparent; /* Cor do fundo do site para "apagar" a linha atrás */
+    padding: 0 20px; /* Cria um respiro nas laterais para a linha não grudar na imagem */
+
+    border-radius: 50%; /* Opcional: deixa o fundo da logo redondo */
+    animation: RunPlane 10s linear infinite;
+}
+@keyframes RunPlane {
+  from {
+    left: -50px;
+  }
+  to {
+    left: 100%;
+  }
+}
+ /* reponsividade navbar */
+@media (max-width: 768px) {
+    /* 1. Ajusta o container e mostra o botão do menu */
+    .nav-container {
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display:block;
+    }
+
+    /* 2. Remove a posição absoluta do nome para ele não sobrepor o menu */
+
+    .brand-name {
+    font-size: 1.0rem;
+    font-weight: 500;
+    position: static;
+    transform: none;
+    order: -1;
+  }
+
+
+    /* 3. Estilo do Menu Dropdown (Escondido por padrão) */
+    .nav-links {
+        position: absolute;
+        top: 100%; /* Cola logo abaixo da navbar */
+        left: 0;
+        width: 100%;
+        background-color: rgba(15, 16, 20, 0.98);
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        max-height: 0; /* Começa com altura zero */
+        overflow: hidden; /* Esconde o conteúdo que vazar */
+        transition: max-height 0.3s ease-in-out;
+        gap: 0;
+    }
+
+    /* Junta os dois lados do menu em um só */
+    .nav-left, .nav-right {
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 1.5rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* 4. Classe 'active' que o JavaScript vai ativar */
+    .nav-links.active {
+        max-height: 400px; /* Expande o menu */
+    }
+}
+
+
+/* =========================================
+   RESPONSIVIDADE DA SEÇÃO INTRO (Mobile)
+========================================= */
+@media (max-width: 768px) {
+    /* 1. Centraliza a seção inteira e ajusta a altura */
+    #intro {
+        justify-content: center;
+        min-height: 80vh;
+        padding: 2rem 1rem; /* Adiciona um respiro interno */
+    }
+
+    /* 2. Zera as margens grandes e centraliza o texto */
+    .banner-content {
+        margin-left: 0;
+        margin-top: 0;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    /* 3. Reduz o tamanho da fonte para não quebrar a tela */
+    .hero-title {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    /* 4. Centraliza o Botão (Remove o margin-left de 150px) */
+    .cta-button {
+        margin: 0 auto; /* Centraliza horizontalmente */
+        display: block;
+        width: fit-content;
+    }
+
+    /* 5. Centraliza e ajusta as logos (Google, Meta, TikTok) */
+    .lista-items {
+        padding-left: 0; /* Remove a margem esquerda de 60px */
+        padding-top: 30px;
+        justify-content: center; /* Centraliza as logos */
+        gap: 10px;
+    }
+
+    /* Reduz levemente o tamanho das logos para caberem lado a lado */
+    .item img {
+        width: 140px;
+    }
+}
+
 /* Cards (Grid) */
 .grid-container {
     display: grid;
@@ -284,42 +460,4 @@ h2 {
 .card h3 {
     color: var(--neon-accent);
     margin-bottom: 1rem;
-}
-
-/* Responsividade (Mobile) */
-@media (max-width: 768px) {
-    /* Esconde os links laterais do desktop */
-    .nav-left, .nav-right {
-        display: none !important;
-    }
-
-    /* Ajusta o nome da marca para ficar normal (não absoluto) */
-    .brand-name {
-        position: static;
-        transform: none;
-        margin: 0 auto;
-    }
-
-    /* Muda a navbar para coluna */
-    .nav-container {
-        justify-content: center;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    /* Mostra os links mobile */
-    .nav-mobile-links {
-        display: flex;
-        gap: 1.5rem;
-        font-size: 0.9rem;
-    }
-
-    .nav-mobile-links a {
-        color: var(--text-main);
-        text-decoration: none;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
 }
