@@ -134,9 +134,15 @@ h1, h2 {
 }
 
 h2 {
-    border-bottom: 2px solid var(--neon-accent);
+    /* border-bottom: 2px solid var(--neon-accent); */
     padding-bottom: 0.5rem;
     display: inline-block;
+    text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-weight: lighter;
 }
 
 /* Hero Section */
@@ -590,6 +596,31 @@ clip-path: polygon(
     }
 }
 
+
+#secao-constelacao {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    background-color: var(--bg-dark); /* Fundo preto base */
+    /* overflow: hidden; Esconde estrelas que saírem da tela */
+}
+
+/* O container da constelação ocupando todo o fundo */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Fica no fundo */
+}
+
+/* Garante que o texto fique por cima das estrelas */
+.conteudo-secao {
+    position: relative;
+    z-index: 2; /* Fica na frente */
+    /* Seus estilos de centralização aqui... */
+}
 /* Cards (Grid) */
 .grid-container {
     display: grid;
@@ -599,6 +630,9 @@ clip-path: polygon(
     margin-top: 2rem;
 }
 
+#servicos h2 {
+  border-bottom: 2px solid var(--neon-accent);
+}
 .card {
     background-color: var(--bg-card);
     padding: 2rem;
