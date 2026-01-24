@@ -26,7 +26,7 @@ body {
 
 /* Navbar */
 nav {
-    background-color: rgba(15, 16, 20, 0.95);
+    background-color: transparent;
     padding: 1.5rem 2rem;
     position: fixed;
     width: 100%;
@@ -309,7 +309,7 @@ h2 {
 .logo-divisor {
     position: relative;
     z-index: 2; /* Fica na frente da linha */
-    height: 60px; /* Tamanho da sua logo */
+    height: 50px; /* Tamanho da sua logo */
 
     /* O SEGREDO DO EFEITO: */
     background-color: transparent; /* Cor do fundo do site para "apagar" a linha atrás */
@@ -432,6 +432,143 @@ h2 {
     /* Reduz levemente o tamanho das logos para caberem lado a lado */
     .item img {
         width: 140px;
+    }
+}
+
+/* =========================================
+   NOVA SEÇÃO SPLIT (Quadrada com Fade)
+========================================= */
+#nova-secao-split {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    /* Define uma altura fixa para garantir o aspecto quadrado no desktop */
+    height: 80vh;
+    min-height: 600px; /* Garante que não fique muito pequeno em telas baixas */
+    padding: 0; /* Remove padding padrão de sections para a imagem tocar as bordas */
+    margin: 0;
+    position: relative;
+    background-color: var(--bg-dark);
+}
+
+/* --- LADO ESQUERDO (Texto) --- */
+.split-left {
+    flex: 1;
+    width: 50%; /* Ocupa 50% do espaço */
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: flex-start; /* Empurra o conteúdo para perto da imagem */
+    padding-left: 10%;
+}
+
+.split-content-box {
+    max-width: 500px; /* Limita a largura do texto para ficar elegante */
+    text-align: left; /* Alinha texto à direita para "conversar" com a imagem */
+}
+
+/* Estilização específica dos títulos desta seção */
+.split-content-box h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+/* Destaque neon no H1 */
+.split-content-box h1 span {
+    color: var(--neon-accent);
+    text-shadow: var(--neon-glow);
+}
+
+.split-content-box h2 {
+    font-size: 1.2rem;
+    color: #aaa; /* Cor mais suave para subtítulo */
+    font-weight: 400;
+    border: none; /* Remove a borda padrão dos H2 do site */
+    padding: 0;
+}
+
+/* --- LADO DIREITO (Imagem e Efeito) --- */
+/* --- LADO DIREITO (Container) --- */
+.split-right {
+    flex: 1;
+    width: 50%;
+    position: relative; /* Segura a imagem e o overlay */
+    height: 100%;
+    overflow: hidden; /* Corta qualquer excesso da imagem */
+    display: flex;
+}
+
+/* 1. Estilo da Imagem */
+.split-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem preencher o quadrado sem distorcer */
+    object-position: right center;
+  }
+
+/* 2. O EFEITO DE FADE-OUT */
+.split-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Degradê da esquerda (preto) para a direita (transparente) */
+    background: linear-gradient(
+        to right,
+        var(--bg-dark) 0%,
+        rgba(15, 16, 20, 0.5) 20%,
+        transparent 100%
+    );
+    z-index: 2;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE DA NOVA SEÇÃO (Mobile)
+========================================= */
+@media (max-width: 968px) {
+    #nova-secao-split {
+        flex-direction:row; /* Empilha um sobre o outro */
+        height: auto; /* Altura automática */
+    }
+
+    /* Ajustes do lado do texto no mobile */
+    .split-left {
+        flex: none;
+        width: 50%;
+        justify-content: left;
+        padding: 4rem 2rem;
+    }
+
+    .split-content-box {
+        text-align: left; /* Centraliza texto no mobile */
+        max-width: 100%;
+    }
+
+    .split-content-box h1 {
+        font-size: 1.5rem; /* Diminui um pouco a fonte */
+    }
+
+    /* Ajustes do lado da imagem no mobile */
+    .split-right {
+      width: 50%;
+      position: relative;
+      height: 450px; /* Altura da imagem no celular */
+    }
+
+    .split-overlay {
+        /* No celular, o degradê vem de cima (preto) para baixo (transparente) */
+        background: linear-gradient(
+            to bottom,
+            var(--bg-dark) 0%,
+            transparent 100%
+        );
     }
 }
 
