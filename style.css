@@ -115,6 +115,33 @@ nav {
     background-color: var(--neon-accent); /* Usa seu neon azul */
     transition: all 0.3s ease;
 }
+/* =========================================
+   SIDEBAR FLUTUANTE (Direita)
+========================================= */
+.sidebar-flutuante {
+    position: fixed;            /* Trava o elemento na tela */
+    right: 20px;                /* Distância da borda direita */
+    top: 50%;                   /* Centraliza verticalmente */
+    transform: translateY(-50%);/* Ajuste fino do centro perfeito */
+    display: flex;
+    flex-direction: column;     /* Empilha os botões em coluna */
+    gap: 15px;                  /* Espaço entre os botões */
+    z-index: 1000;              /* Garante que fique acima de todas as seções */
+}
+/* Ajuste para as imagens de logo dentro dos botões flutuantes */
+.btn-float img {
+    width: 70px;         /* Tamanho do ícone (ajuste se achar pequeno/grande) */
+    height: 70px;
+    object-fit: contain; /* Garante que a logo não fique esticada ou cortada */
+
+    /* Faz a transição ficar suave caso a imagem mude no hover */
+    transition: transform 0.3s ease;
+}
+
+/* Opcional: Faz o ícone dar um "pulinho" ao passar o mouse */
+.btn-float:hover img {
+    transform: scale(1.15);
+}
 
 /* Seções Gerais */
 section {
@@ -549,6 +576,7 @@ clip-path: polygon(
         rgba(15, 16, 20, 0.5) 20%,
         transparent 100%
     );
+
     z-index: 2;
 }
 
@@ -581,7 +609,7 @@ clip-path: polygon(
 
     /* Ajustes do lado da imagem no mobile */
     .split-right {
-      width: 50%;
+      width: 60%;
       position: relative;
       height: 450px; /* Altura da imagem no celular */
     }
@@ -605,6 +633,10 @@ clip-path: polygon(
     /* overflow: hidden; Esconde estrelas que saírem da tela */
 }
 
+.conteudo-secao h2 span {
+  color: var(--neon-accent);
+}
+
 /* O container da constelação ocupando todo o fundo */
 #particles-js {
     position: absolute;
@@ -621,6 +653,7 @@ clip-path: polygon(
     z-index: 2; /* Fica na frente */
     /* Seus estilos de centralização aqui... */
 }
+
 /* Cards (Grid) */
 .grid-container {
     display: grid;
