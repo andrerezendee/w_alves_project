@@ -388,6 +388,10 @@ clip-path: polygon(
         display:block;
     }
 
+    .sidebar-flutuante {
+      display: none;
+    }
+
     /* 2. Remove a posição absoluta do nome para ele não sobrepor o menu */
 
     .brand-name {
@@ -617,7 +621,7 @@ clip-path: polygon(
     .split-overlay {
         /* No celular, o degradê vem de cima (preto) para baixo (transparente) */
         background: linear-gradient(
-            to bottom,
+            to right,
             var(--bg-dark) 0%,
             transparent 100%
         );
