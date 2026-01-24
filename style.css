@@ -289,43 +289,61 @@ h2 {
 /* A Linha Neon que vai de fora a fora */
 .linha-cruzada {
     position: absolute;
-    top: 50%;
+    top: 20%;
+    transform: translateY(-50%);
     left: 0;
     width: 100%;
-    height: 2px;
-    background: linear-gradient(
-        to right,
-        transparent 0%,           /* Começa invisível na ponta esquerda */
-        var(--neon-accent) 15%,   /* Fica 100% visível logo depois */
-        var(--neon-accent) 85%,   /* Mantém visível até o outro lado */
-        transparent 100%          /* Termina invisível na ponta direita */
-    );
-
-    /* Para esse efeito, removemos o box-shadow antigo para o brilho não vazar nas pontas transparentes */
+    /* Altura da caixa define o quão profundo é o "bico" do envelope */
+    height: 80px;
     z-index: 1;
+    pointer-events: none;
+
+    /* --- O FORMATO DO ENVELOPE (___V___) --- */
+    /* Desenhamos uma linha de 3px de espessura que faz o caminho geométrico */
+clip-path: polygon(
+        /* --- Caminho de ida (Topo da linha) --- */
+        0% 0%,       /* Início na esquerda */
+        35% 0%,      /* Início do W (Começa a descer) */
+        42.5% 80%,   /* Fundo Esquerdo (Ponto 1 do W) */
+        50% 0%,      /* Pico Central (Volta pra cima no meio exato) */
+        57.5% 80%,   /* Fundo Direito (Ponto 2 do W) */
+        65% 0%,      /* Fim do W (Volta a ficar reto) */
+        100% 0%,     /* Fim na direita */
+
+        /* --- Caminho de volta (Espessura da linha) --- */
+        100% 4%,
+        66% 4%,      /* Borda direita do W */
+        57.5% 84%,   /* Espessura do Fundo Direito */
+        50% 10%,      /* Espessura do Pico Central */
+        42.5% 84%,   /* Espessura do Fundo Esquerdo */
+        34% 4%,      /* Borda esquerda do W */
+        0% 4%        /* Fim da espessura */
+    );
+    /* Fundo base: a linha fica visível o tempo todo, mas bem fraquinha */
+    background-color: rgba(0, 242, 255, 0.1);
+
+    /* --- A ANIMAÇÃO DO PULSO DE DADOS --- */
+    /* O pulso de luz forte que vai viajar pela linha */
+    background-image: radial-gradient(
+        ellipse at center,
+        var(--neon-accent) 0%,
+        rgba(0, 242, 255, 0.8) 15%,
+        transparent 50%
+    );
+    background-size: 40% 100%; /* Largura do feixe de luz */
+    background-repeat: no-repeat;
+
+    /* Ativa a animação de viagem */
+    animation: pulsoEnvelope 3s linear infinite;
 }
 
-/* A Logo encostada na linha */
-.logo-divisor {
-    position: relative;
-    z-index: 2; /* Fica na frente da linha */
-    height: 50px; /* Tamanho da sua logo */
-
-    /* O SEGREDO DO EFEITO: */
-    background-color: transparent; /* Cor do fundo do site para "apagar" a linha atrás */
-    padding: 0 20px; /* Cria um respiro nas laterais para a linha não grudar na imagem */
-
-    border-radius: 50%; /* Opcional: deixa o fundo da logo redondo */
-    animation: RunPlane 10s linear infinite;
+/* O motor da animação */
+@keyframes pulsoEnvelope {
+    from { background-position: -40% 0; } /* Começa escondido na esquerda */
+    to   { background-position: 140% 0; } /* Termina escondido na direita */
 }
-@keyframes RunPlane {
-  from {
-    left: -50px;
-  }
-  to {
-    left: 100%;
-  }
-}
+
+
  /* reponsividade navbar */
 @media (max-width: 768px) {
     /* 1. Ajusta o container e mostra o botão do menu */
