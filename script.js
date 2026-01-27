@@ -88,3 +88,23 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+document.addEventListener("DOMContentLoaded", function() {
+
+    const btnVerdade = document.getElementById('btn-verdade');
+    const cardResposta = document.getElementById('card-resposta');
+
+    if (btnVerdade && cardResposta) {
+        btnVerdade.addEventListener('click', function() {
+            // 1. Remove a classe que esconde
+            cardResposta.classList.remove('oculto');
+
+            // 2. Adiciona a classe que mostra com animação
+            cardResposta.classList.add('visivel');
+
+            // 3. (Opcional) Esconde o botão depois de clicar para focar na mensagem
+            btnVerdade.style.display = 'none';
+        });
+    }
+
+
+});

@@ -302,6 +302,7 @@ h3 {
     margin-left: 150px;
 
 
+
 }
 
 .cta-button:hover {
@@ -665,6 +666,109 @@ clip-path: polygon(
     gap: 2rem;
     width: 100%;
     margin-top: 2rem;
+}
+
+/* pegadinha section */
+/* Container que centraliza tudo */
+.pegadinha-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+#btn-verdade {
+    padding: 12px 30px;
+    background-color: transparent;
+    border: 1px solid var(--neon-accent);
+    color: var(--neon-accent);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: var(--neon-glow);
+    align-items: center;
+}
+
+#btn-verdade:hover {
+    background-color: var(--neon-accent);
+    color: var(--bg-dark);
+}
+
+/* Estilo do Card da "Isca" (Mantém o padrão do seu site) */
+.card-isca h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+.card-isca h2 span{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--neon-accent);
+}
+
+/* O Card da Resposta (Vermelho Neon) */
+.card-vermelho {
+    max-width: 600px;
+    padding: 2rem;
+
+    /* Fundo Transparente como pedido */
+    background-color: transparent;
+
+    /* Borda e Brilho Vermelho Fluorescente */
+    border: 2px solid #ff3131;
+    box-shadow: 0 0 20px rgba(255, 49, 49, 0.4), inset 0 0 10px rgba(255, 49, 49, 0.1);
+
+    border-radius: 15px;
+
+    /* Animação para aparecer suavemente */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+}
+
+/* Texto dentro do card vermelho */
+.card-vermelho h3 {
+    color: #ff3131; /* Título vermelho */
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 5px rgba(255, 49, 49, 0.6);
+}
+
+.card-vermelho p {
+    color: #fff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Classe utilitária para esconder o elemento */
+.oculto {
+    display: none;
+}
+
+/* Classe que o JS vai adicionar para mostrar o card */
+.visivel {
+    display: block;
+    animation: surgir 0.5s forwards; /* Ativa a animação */
+}
+
+@keyframes surgir {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 968px) {
+  .card-isca h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .card-isca h2 span{
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
 }
 
 #servicos h2 {
