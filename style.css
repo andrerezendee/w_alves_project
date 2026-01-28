@@ -320,6 +320,52 @@ h3 {
     margin: 40px 0; /* Espaço em cima e embaixo do divisor */
 }
 
+
+.linha-cruzada-um {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza exatamente no meio */
+    left: 0;
+    width: 100%;
+    height: 4px; /* Espessura da linha reta */
+    z-index: 1;
+    pointer-events: none; /* Garante que não atrapalhe cliques */
+
+    /* --- O FORMATO (Linha Reta Simples) --- */
+    /* Um retângulo simples que cobre 100% da altura definida acima */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+
+    /* --- AS CORES E O EFEITO --- */
+
+    /* 1. Fundo base (a linha "apagada" que fica sempre visível) */
+    background-color: rgba(0, 242, 255, 0.15);
+
+    /* 2. O FEIXE DE LUZ (O pulso que vai passar) */
+    /* Um gradiente radial forte que simula um ponto de luz */
+    background-image: radial-gradient(
+        ellipse at center,
+        var(--neon-accent) 0%,       /* Centro brilhante (sua cor neon) */
+        rgba(0, 242, 255, 0.8) 20%,  /* Halo ao redor */
+        transparent 60%              /* Fica invisível nas pontas do feixe */
+    );
+
+    /* Define o tamanho do feixe (ele é mais curto que a linha total) */
+    background-size: 40% 100%;
+    background-repeat: no-repeat;
+
+    /* Ativa a animação de movimento */
+    animation: pulsoTravellingStraight 2.5s linear infinite;
+}
+
+/* --- O MOTOR DA ANIMAÇÃO --- */
+/* Adicione isso no final do seu CSS se ainda não tiver */
+@keyframes pulsoTravellingStraight {
+    /* Começa fora da tela na esquerda (-50%) */
+    from { background-position: -50% 0; }
+    /* Termina fora da tela na direita (150%) */
+    to   { background-position: 150% 0; }
+}
+
 /* A Linha Neon que vai de fora a fora */
 .linha-cruzada {
     position: absolute;
